@@ -1,0 +1,15 @@
+workflows:
+  build-android:
+    name: Build HyperBoostFF APK
+    environment:
+      vars:
+        PROJECT_DIR: "HyperBoostFF"
+      java: 17
+      gradle: 8.4
+    scripts:
+      - name: Build APK (debug)
+        script: |
+          cd $PROJECT_DIR
+          gradle assembleDebug
+    artifacts:
+      - HyperBoostFF/app/build/outputs/apk/debug/*.apk
