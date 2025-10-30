@@ -4,13 +4,20 @@ workflows:
     environment:
       vars:
         PROJECT_DIR: "HyperBoostFF"
-      tools:
-        java: 17
-        gradle: 8.4
+        JAVA_VERSION: 17
+        GRADLE_VERSION: 8.4
     scripts:
+      - name: Set up Java and Gradle
+        script: |
+          sdk use java $JAVA_VERSION
+          sdk use gradle $GRADLE_VERSION
       - name: Build APK (debug)
         script: |
           cd $PROJECT_DIR
           ./gradlew assembleDebug
     artifacts:
-      - HyperBoostFF/app/build/outputs/apk/debug/*.apk
+      - HyperBoostFF/app/build/outputs/**/*.apk
+    publishing:
+      email:
+        recipients:
+          - your_email@example.com
