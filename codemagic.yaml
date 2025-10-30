@@ -4,8 +4,9 @@ workflows:
     environment:
       vars:
         PROJECT_DIR: "HyperBoostFF"
-      java: 17
-      gradle: 8.4
+      tools:
+        java: 17
+        gradle: 8.4
     scripts:
       - name: Build APK (debug)
         script: |
